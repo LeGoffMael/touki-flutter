@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:touki/models/travel.dart';
 import 'package:touki/shared/widgets/user/multipleAvatars.dart';
 
 class TravelCard extends StatelessWidget {
   final Travel travel;
   final VoidCallback openContainer;
+
+  DateFormat f = new DateFormat('dd MMM yyyy');
 
   TravelCard({Key key, this.travel, this.openContainer}) : super(key: key);
 
@@ -68,7 +71,10 @@ class TravelCard extends StatelessWidget {
                                       color: Colors.white),
                                 ),
                                 Text(
-                                  '25th Sept to 7th Nov 2020',
+                                  'From ' +
+                                      f.format(travel.startDate).toString() +
+                                      ' to ' +
+                                      f.format(travel.endDate).toString(),
                                   style: TextStyle(
                                       fontSize: 14.0, color: Colors.white),
                                 )

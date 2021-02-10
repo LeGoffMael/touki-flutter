@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:touki/models/travel.dart';
 import 'package:touki/models/travelStep.dart';
 import 'package:touki/shared/widgets/steps/stepStepper.dart';
@@ -8,6 +9,8 @@ import 'package:touki/services/stepService.dart';
 // TODO: close page when slide to bottom
 class TravelDetails extends StatelessWidget {
   final Travel travel;
+
+  DateFormat f = new DateFormat('dd MMM yyyy');
 
   TravelDetails({Key key, this.travel}) : super(key: key);
 
@@ -60,7 +63,10 @@ class TravelDetails extends StatelessWidget {
                     height: 16,
                   ),
                   Text(
-                    '25th Sept to 7th Nov 2020',
+                    'From ' +
+                        f.format(travel.startDate).toString() +
+                        ' to ' +
+                        f.format(travel.endDate).toString(),
                     style: TextStyle(fontSize: 22.0, color: Colors.black87),
                   ),
                   Row(
