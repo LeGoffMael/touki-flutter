@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:touki/models/travel.dart';
+import 'package:touki/models/travelStep.dart';
+import 'package:touki/shared/widgets/steps/stepStepper.dart';
 import 'package:touki/shared/widgets/user/multipleAvatars.dart';
+import 'package:touki/services/stepService.dart';
 
+// TODO: close page when slide to bottom
 class TravelDetails extends StatelessWidget {
   final Travel travel;
 
@@ -69,6 +73,21 @@ class TravelDetails extends StatelessWidget {
                     ],
                   )
                 ],
+              ),
+            ),
+            Expanded(
+              child: FutureBuilder<List<TravelStep>>(
+                future: StepService().fetchStepsByTravel(travel.id),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) print(snapshot.error);
+
+                  return snapshot.hasData
+                      ? StepStepper(steps: snapshot.data)
+                      : Center(child: CircularProgressIndicator());
+
+                  // By default, show a loading spinner.
+                  return CircularProgressIndicator();
+                },
               ),
             ),
           ],

@@ -10,8 +10,6 @@ class MultipleAvatars extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(users[0].firstName);
-
     List<Widget> stackLayers =
         // Overlap only 3 first users avatars if limit is set to true
         List<Widget>.generate(

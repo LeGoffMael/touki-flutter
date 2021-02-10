@@ -19,7 +19,7 @@ class TravelsList extends StatelessWidget {
       itemBuilder: (context, index) {
         return OpenContainer<bool>(
           transitionType: _transitionType,
-          openBuilder: (BuildContext context, VoidCallback _) {
+          openBuilder: (BuildContext context, VoidCallback openContainer) {
             return TravelDetails(travel: travels[index]);
           },
           onClosed: onClosed,
