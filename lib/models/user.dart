@@ -1,14 +1,25 @@
-import 'package:touki/models/travel.dart';
-
 class User {
   int id;
-  String username;
+  String userName;
+  String firstName;
+  String lastName;
   String profileImagePath;
-  List<Travel> travels;
 
   User({
     this.id,
-    this.username,
+    this.userName,
+    this.firstName,
+    this.lastName,
     this.profileImagePath,
   });
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      id: json['id'] as int,
+      userName: json['userName'] as String,
+      firstName: json['firstName'] as String,
+      lastName: json['lastName'] as String,
+      profileImagePath: json['profileImagePath'] as String,
+    );
+  }
 }

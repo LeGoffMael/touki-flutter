@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:touki/models/travel.dart';
+import 'package:touki/shared/widgets/user/multipleAvatars.dart';
 
 class TravelDetails extends StatelessWidget {
   final Travel travel;
@@ -42,16 +43,33 @@ class TravelDetails extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      travel.title,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 30.0,
-                      ),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    travel.title,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 30.0,
                     ),
-                  ]),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Text(
+                    '25th Sept to 7th Nov 2020',
+                    style: TextStyle(fontSize: 22.0, color: Colors.black87),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        'By: ',
+                        style: TextStyle(fontSize: 18.0, color: Colors.black87),
+                      ),
+                      MultipleAvatars(users: travel.users, limit: false)
+                    ],
+                  )
+                ],
+              ),
             ),
           ],
         ),

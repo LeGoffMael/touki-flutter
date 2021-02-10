@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:touki/models/travel.dart';
-import 'package:touki/shared/widgets/user/overlappedAvatar.dart';
+import 'package:touki/shared/widgets/user/multipleAvatars.dart';
 
 class TravelCard extends StatelessWidget {
   final Travel travel;
@@ -30,6 +30,23 @@ class TravelCard extends StatelessWidget {
                     child: Container(),
                   ),
                 ),
+                // Gradient to make text more visible
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      gradient: LinearGradient(
+                          begin: FractionalOffset.topCenter,
+                          end: FractionalOffset.bottomCenter,
+                          colors: [
+                            Colors.grey.withOpacity(0.0),
+                            Colors.black54,
+                          ],
+                          stops: [
+                            0.0,
+                            1.0
+                          ])),
+                ),
+                // Add text on image card
                 Positioned(
                     bottom: 16.0,
                     left: 16.0,
@@ -57,7 +74,7 @@ class TravelCard extends StatelessWidget {
                                 )
                               ],
                             )),
-                        OverllapedAvatar()
+                        MultipleAvatars(users: travel.users, limit: true)
                       ],
                     )),
               ],

@@ -10,8 +10,16 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Touki'),
-      ),
+          leading: const Icon(Icons.airplanemode_active),
+          title: Text(
+            'Touki',
+            style: TextStyle(
+              fontSize: 25.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          centerTitle: false,
+          brightness: Brightness.dark),
       body: Center(
         child: FutureBuilder<List<Travel>>(
           future: TravelService().fetchTravels(),
